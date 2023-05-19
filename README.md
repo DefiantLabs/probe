@@ -12,5 +12,5 @@ A large part of this package is inspired by and attributed to [Strangelove Ventu
 
 ```
 // APACHE NOTICE
-// Source copied and modified from https://github.com/strangelove-ventures/lens
+// Sourced with modifications from https://github.com/strangelove-ventures/lens
 ```
