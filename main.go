@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// Proof of concept code
-	var checkHeight int64 = 8283313
+	var checkHeight int64 = 15289176
 
 	// Check chain status
 	query := querier.Query{Client: cl, Options: &querier.QueryOptions{}}
@@ -44,7 +44,7 @@ func main() {
 
 	// Get a block
 	options := querier.QueryOptions{Height: checkHeight}
-	query = querier.Query{Client: cl, Options: &querier.QueryOptions{}}
+	query = querier.Query{Client: cl, Options: &querier.QueryOptions{Height: checkHeight}}
 	block, err := querier.BlockRPC(&query)
 	if err != nil {
 		fmt.Println("Error getting block")
@@ -57,7 +57,7 @@ func main() {
 
 	// Get block results
 	options = querier.QueryOptions{Height: checkHeight}
-	query = querier.Query{Client: cl, Options: &querier.QueryOptions{}}
+	query = querier.Query{Client: cl, Options: &querier.QueryOptions{Height: checkHeight}}
 	blockResults, err := querier.BlockResultsRPC(&query)
 	if err != nil {
 		fmt.Println("Error getting block results")
@@ -81,8 +81,19 @@ func main() {
 		os.Exit(1)
 	} else {
 		fmt.Println("Got txes, some TX hashes follow:")
-		for _, v := range txResponse.TxResponses {
-			fmt.Println(v.TxHash)
+		for i := range txResponse.Txs {
+			currTx := txResponse.Txs[i]
+			currTxResp := txResponse.TxResponses[i]
+			fmt.Println("TX Hash:", currTxResp.TxHash)
+			fmt.Println("Contains these messages:")
+			for msgIdx := range currTx.Body.Messages {
+				currMsg := currTx.Body.Messages[msgIdx].GetCachedValue()
+				if currMsg == nil {
+					fmt.Println("Error getting CachedValue for", currTx.Body.Messages[msgIdx].TypeUrl)
+				} else {
+					fmt.Println(currTx.Body.Messages[msgIdx].TypeUrl)
+				}
+			}
 		}
 	}
 }

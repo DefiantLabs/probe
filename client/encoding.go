@@ -3,6 +3,7 @@
 package client
 
 import (
+	tendermintLiquidityTypes "github.com/DefiantLabs/probe/client/codec/tendermint/liquidity/x/liquidity/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
@@ -25,6 +26,10 @@ func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
 	std.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 	modBasic.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	modBasic.RegisterInterfaces(encodingConfig.InterfaceRegistry)
+
+	// osmosisGammTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
+	tendermintLiquidityTypes.RegisterLegacyAminoCodec(encodingConfig.Amino)
+	tendermintLiquidityTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
 	return encodingConfig
 }
