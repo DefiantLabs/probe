@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// Proof of concept code
-	var checkHeight int64 = 15289176
+	var checkHeight int64 = 9736414
 
 	// Check chain status
 	query := querier.Query{Client: cl, Options: &querier.QueryOptions{}}
