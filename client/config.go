@@ -17,6 +17,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/params"
 	"github.com/cosmos/cosmos-sdk/x/slashing"
 	"github.com/cosmos/cosmos-sdk/x/staking"
+	ibcTransfer "github.com/cosmos/ibc-go/v7/modules/apps/transfer"
+	ibc "github.com/cosmos/ibc-go/v7/modules/core"
+	ibcTm "github.com/cosmos/ibc-go/v7/modules/light-clients/07-tendermint"
 )
 
 var (
@@ -34,6 +37,9 @@ var (
 		slashing.AppModuleBasic{},
 		staking.AppModuleBasic{},
 		vesting.AppModuleBasic{},
+		ibc.AppModuleBasic{},
+		ibcTransfer.AppModuleBasic{},
+		ibcTm.AppModuleBasic{},
 	}
 )
 
