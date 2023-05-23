@@ -8,7 +8,9 @@ This package intends to be a generalized Cosmos SDK RPC querier for use in a maj
 
 ## Attribution
 
-A large part of this package is inspired by and attributed to [Strangelove Ventures Lens](https://github.com/strangelove-ventures/lens). Files containing modified source code from this repository are denoted with the following header:
+This package was originally inspired by [Strangelove Ventures Lens](https://github.com/strangelove-ventures/lens) (discontinued).
+
+Files containing modified source code from this repository are denoted with the following header:
 
 ```
 // APACHE NOTICE
