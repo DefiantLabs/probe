@@ -24,7 +24,9 @@ func main() {
 	}
 	cl, err := client.NewChainClient(cconfig, "", nil, nil)
 	if err != nil {
+		fmt.Println("Error setting up client")
 		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	// Proof of concept code
