@@ -67,8 +67,8 @@ Key Highlights:
 
 - :dart: **Generalized Querying**: Finely tuned for transaction and message type querying, Probe focuses on what matters most.
 - :package: **Module Support**: Comprehensive solution for unpacking base Cosmos SDK types and handling customized modules.
-- :dove_of_peace: **Lightweight Design**: A minimalistic design that places querying at the forefront, making it a go-to tool for developers.
-- :medal: **Continuity and Evolution**: Probe was originally inspired by the now-discontinued Strangelove Ventures Lens, showing a strong lineage and progressive improvement in the Cosmos SDK querying tools.
+- 🕊️: **Lightweight Design**: A minimalistic design that places querying at the forefront, making it a go-to tool for developers.
+- 🥇: **Continuity and Evolution**: Probe was originally inspired by the now-discontinued Strangelove Ventures Lens, showing a strong lineage and progressive improvement in the Cosmos SDK querying tools.
 
 ---
 
@@ -80,7 +80,7 @@ Key Highlights:
 
 - :control_knobs: **AutoCLI Advantage**: Hubl allows you to query any Cosmos SDK based blockchain that supports reflection, making it a versatile tool for diverse chains.
 - :books: **Chain-Registry Compatibility**: Hubl integrates seamlessly with the chain-registry, simplifying the process of configuring and querying multiple chains.
-- :three_button_mouse: **User-Friendly Commands**: With straightforward commands, Hubl enables easy interaction with a wide range of chains.
+- 🥰: **User-Friendly Commands**: With straightforward commands, Hubl enables easy interaction with a wide range of chains.
 
 ---
 
