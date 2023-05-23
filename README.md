@@ -53,13 +53,13 @@ This protobuf file outlines the `tendermint.liquidity.v1beta1` package and the m
 Each operation has a corresponding response message. This definition allows Probe to comprehend these liquidity pool operations and handle them accurately when interacting with the Cosmos blockchain.
 
 ---
-### :rocket: Probe vs Hubl: A Comparative Overview :milky_way:
+## :rocket: Probe vs Hubl: A Comparative Overview :milky_way:
 
 Both **Probe** and **Hubl** are mighty tools for querying Cosmos SDK based blockchains, each catering to different needs and offering unique capabilities.
 
 ---
 
-#### :flying_saucer: Probe: A Deep Dive into Cosmos SDK Types
+### :flying_saucer: Probe: A Deep Dive into Cosmos SDK Types
 
 Probe excels in its ability to handle Cosmos SDK types and specialized modules. It provides a detailed process for unpacking on-chain message types into their underlying Go types, shining particularly bright when working with chains that lack reflection support.
 
@@ -72,7 +72,7 @@ Key Highlights:
 
 ---
 
-#### :stars: Hubl: Harnessing the Power of AutoCLI and Chain-Registry
+### :stars: Hubl: Harnessing the Power of AutoCLI and Chain-Registry
 
 Hubl makes full use of the new AutoCLI feature of the Cosmos SDK, enabling querying of any Cosmos SDK based blockchain that supports reflection. It's the tool of choice for those seeking compatibility and ease of use with the chain-registry.
 
