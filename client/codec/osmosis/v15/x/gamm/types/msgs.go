@@ -15,6 +15,8 @@ var (
 	_ sdk.Msg = (*MsgExitSwapExternAmountOut)(nil)
 )
 
+// WARNING: The functions in here are interface stub definitions, not usable in their current state
+
 // Join
 func (msg MsgJoinPool) Route() string { return "" }
 

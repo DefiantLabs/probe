@@ -5,8 +5,11 @@ import (
 	"os"
 
 	"github.com/DefiantLabs/probe/client"
+	gammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
 	querier "github.com/DefiantLabs/probe/query"
+	cosmosTypes "github.com/cosmos/cosmos-sdk/types"
 	cquery "github.com/cosmos/cosmos-sdk/types/query"
+	ibcChanTypes "github.com/cosmos/ibc-go/v7/modules/core/04-channel/types"
 )
 
 func main() {
@@ -91,11 +94,30 @@ func main() {
 			for msgIdx := range currTx.Body.Messages {
 				currMsg := currTx.Body.Messages[msgIdx].GetCachedValue()
 				if currMsg == nil {
+					// This happens if the Codec for the client is missing a message type
 					fmt.Println("Error getting CachedValue for", currTx.Body.Messages[msgIdx].TypeUrl)
 				} else {
-					fmt.Println(currTx.Body.Messages[msgIdx].TypeUrl)
+					// Pass the message to some handler function
+					handler, ok := handlers[currTx.Body.Messages[msgIdx].TypeUrl]
+					if ok {
+						fmt.Println("Found handler for ", currTx.Body.Messages[msgIdx].TypeUrl)
+						handler(currMsg.(cosmosTypes.Msg))
+					} else {
+						fmt.Println("No handler for ", currTx.Body.Messages[msgIdx].TypeUrl)
+					}
 				}
 			}
 		}
 	}
+}
+
+var handlers = map[string]func(cosmosTypes.Msg){
+	"/osmosis.gamm.v1beta1.MsgSwapExactAmountOut": func(currMsg cosmosTypes.Msg) {
+		swapExactAmountOut := currMsg.(*gammTypes.MsgSwapExactAmountOut)
+		fmt.Printf("%s swapped %s\n", swapExactAmountOut.Sender, swapExactAmountOut.TokenOut)
+	},
+	"/ibc.core.channel.v1.MsgAcknowledgement": func(currMsg cosmosTypes.Msg) {
+		ack := currMsg.(*ibcChanTypes.MsgAcknowledgement)
+		fmt.Printf("%s acked with result %s\n", ack.Signer, ack.Acknowledgement)
+	},
 }
