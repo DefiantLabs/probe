@@ -34,26 +34,12 @@ Probe is a powerful tool for any Cosmos SDK developer seeking efficient, general
 
 ---
 
-## :satellite: Supported Protos
+## :satellite: Supported Message Type Protos
+
+
+This section provides an overview of the protocol buffer messages included in the package for customized Cosmos modules. Protocol buffers are a platform-neutral, extendable mechanism for serializing structured data.
 
 ### :arrow_forward: Tendermint Liquidity v1beta1 Transactions
-
-This section provides an overview of the protocol buffer messages for Tendermint Liquidity v1beta1 transaction messages. Protocol buffers are a platform-neutral, extendable mechanism for serializing structured data.
-
----
-
-#### :bookmark_tabs: Transaction Types
-
-The file encompasses several types of transactions that can be sent to the Tendermint Liquidity protocol:
-
-- **Deposit:** Deposit funds into a liquidity pool.
-- **Withdraw:** Withdraw funds from a liquidity pool.
-- **Swap:** Swap tokens between two liquidity pools.
-- **ProvideLiquidity:** Provide liquidity to a liquidity pool.
-- **RemoveLiquidity:** Remove liquidity from a liquidity pool.
-- **SwapExactTokensForTokens:** Swap tokens between two liquidity pools, ensuring the user receives the same total amount of tokens.
-
----
 
 #### :rocket: tendermint.liquidity.v1beta1
 
@@ -67,6 +53,38 @@ This protobuf file outlines the `tendermint.liquidity.v1beta1` package and the m
 Each operation has a corresponding response message. This definition allows Probe to comprehend these liquidity pool operations and handle them accurately when interacting with the Cosmos blockchain.
 
 ---
+## :rocket: Probe vs Hubl: A Comparative Overview :milky_way:
+
+Both **Probe** and **Hubl** are mighty tools for querying Cosmos SDK based blockchains, each catering to different needs and offering unique capabilities.
+
+---
+
+### :flying_saucer: Probe: A Deep Dive into Cosmos SDK Types
+
+Probe excels in its ability to handle Cosmos SDK types and specialized modules. It provides a detailed process for unpacking on-chain message types into their underlying Go types, shining particularly bright when working with chains that lack reflection support.
+
+Key Highlights:
+
+- :dart: **Generalized Querying**: Finely tuned for transaction and message type querying, Probe focuses on what matters most.
+- :package: **Module Support**: Comprehensive solution for unpacking base Cosmos SDK types and handling customized modules.
+- :dove_of_peace: **Lightweight Design**: A minimalistic design that places querying at the forefront, making it a go-to tool for developers.
+- :medal: **Continuity and Evolution**: Probe was originally inspired by the now-discontinued Strangelove Ventures Lens, showing a strong lineage and progressive improvement in the Cosmos SDK querying tools.
+
+---
+
+### :stars: Hubl: Harnessing the Power of AutoCLI and Chain-Registry
+
+Hubl makes full use of the new AutoCLI feature of the Cosmos SDK, enabling querying of any Cosmos SDK based blockchain that supports reflection. It's the tool of choice for those seeking compatibility and ease of use with the chain-registry.
+
+Key Highlights:
+
+- :control_knobs: **AutoCLI Advantage**: Hubl allows you to query any Cosmos SDK based blockchain that supports reflection, making it a versatile tool for diverse chains.
+- :books: **Chain-Registry Compatibility**: Hubl integrates seamlessly with the chain-registry, simplifying the process of configuring and querying multiple chains.
+- :three_button_mouse: **User-Friendly Commands**: With straightforward commands, Hubl enables easy interaction with a wide range of chains.
+
+---
+
+The choice between Probe and Hubl largely depends on your specific needs, the features of the chains you're working with, and your preferred method of interaction. Both tools offer unique advantages, and there might be additional nuanced differences that can be uncovered with a deeper dive into the functionalities and use cases of each tool.
 
 ## :memo: Attribution
 
