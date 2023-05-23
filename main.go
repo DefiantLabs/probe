@@ -24,11 +24,13 @@ func main() {
 	}
 	cl, err := client.NewChainClient(cconfig, "", nil, nil)
 	if err != nil {
+		fmt.Println("Error setting up client")
 		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	// Proof of concept code
-	var checkHeight int64 = 15289176
+	var checkHeight int64 = 15410855
 
 	// Check chain status
 	query := querier.Query{Client: cl, Options: &querier.QueryOptions{}}
