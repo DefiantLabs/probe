@@ -6,6 +6,7 @@ import (
 
 	"github.com/DefiantLabs/probe/client"
 	gammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
+	poolmanagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
 	querier "github.com/DefiantLabs/probe/query"
 	cosmosTypes "github.com/cosmos/cosmos-sdk/types"
 	cquery "github.com/cosmos/cosmos-sdk/types/query"
@@ -33,7 +34,7 @@ func main() {
 	}
 
 	// Proof of concept code
-	var checkHeight int64 = 9736414
+	var checkHeight int64 = 9779691
 
 	// Check chain status
 	query := querier.Query{Client: cl, Options: &querier.QueryOptions{}}
@@ -119,5 +120,12 @@ var handlers = map[string]func(cosmosTypes.Msg){
 	"/ibc.core.channel.v1.MsgAcknowledgement": func(currMsg cosmosTypes.Msg) {
 		ack := currMsg.(*ibcChanTypes.MsgAcknowledgement)
 		fmt.Printf("%s acked with result %s\n", ack.Signer, ack.Acknowledgement)
+	},
+	"/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn": func(currMsg cosmosTypes.Msg) {
+		swapExactAmountIn := currMsg.(*poolmanagerTypes.MsgSwapExactAmountIn)
+		fmt.Printf("%s swapped %s along these routes:\n", swapExactAmountIn.Sender, swapExactAmountIn.TokenIn)
+		for _, route := range swapExactAmountIn.Routes {
+			fmt.Printf("Pool %d\n", route.PoolId)
+		}
 	},
 }

@@ -1243,34 +1243,34 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 			MethodName: "JoinPool",
 			Handler:    _Msg_JoinPool_Handler,
 		},
-		// {
-		// 	MethodName: "ExitPool",
-		// 	Handler:    _Msg_ExitPool_Handler,
-		// },
-		// {
-		// 	MethodName: "SwapExactAmountIn",
-		// 	Handler:    _Msg_SwapExactAmountIn_Handler,
-		// },
-		// {
-		// 	MethodName: "SwapExactAmountOut",
-		// 	Handler:    _Msg_SwapExactAmountOut_Handler,
-		// },
-		// {
-		// 	MethodName: "JoinSwapExternAmountIn",
-		// 	Handler:    _Msg_JoinSwapExternAmountIn_Handler,
-		// },
-		// {
-		// 	MethodName: "JoinSwapShareAmountOut",
-		// 	Handler:    _Msg_JoinSwapShareAmountOut_Handler,
-		// },
-		// {
-		// 	MethodName: "ExitSwapExternAmountOut",
-		// 	Handler:    _Msg_ExitSwapExternAmountOut_Handler,
-		// },
-		// {
-		// 	MethodName: "ExitSwapShareAmountIn",
-		// 	Handler:    _Msg_ExitSwapShareAmountIn_Handler,
-		// },
+		{
+			MethodName: "ExitPool",
+			Handler:    _Msg_ExitPool_Handler,
+		},
+		{
+			MethodName: "SwapExactAmountIn",
+			Handler:    _Msg_SwapExactAmountIn_Handler,
+		},
+		{
+			MethodName: "SwapExactAmountOut",
+			Handler:    _Msg_SwapExactAmountOut_Handler,
+		},
+		{
+			MethodName: "JoinSwapExternAmountIn",
+			Handler:    _Msg_JoinSwapExternAmountIn_Handler,
+		},
+		{
+			MethodName: "JoinSwapShareAmountOut",
+			Handler:    _Msg_JoinSwapShareAmountOut_Handler,
+		},
+		{
+			MethodName: "ExitSwapExternAmountOut",
+			Handler:    _Msg_ExitSwapExternAmountOut_Handler,
+		},
+		{
+			MethodName: "ExitSwapShareAmountIn",
+			Handler:    _Msg_ExitSwapShareAmountIn_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "osmosis/gamm/v1beta1/tx.proto",

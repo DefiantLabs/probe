@@ -4,6 +4,7 @@ package client
 
 import (
 	osmosisGammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
+	osmosisPoolManagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
 	tendermintLiquidityTypes "github.com/DefiantLabs/probe/client/codec/tendermint/liquidity/x/liquidity/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -29,6 +30,7 @@ func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
 	modBasic.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
 	osmosisGammTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
+	osmosisPoolManagerTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 	tendermintLiquidityTypes.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	tendermintLiquidityTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
