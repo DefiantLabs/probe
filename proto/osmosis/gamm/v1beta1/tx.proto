@@ -25,7 +25,10 @@ service Msg {
   rpc ExitSwapShareAmountIn(MsgExitSwapShareAmountIn)
       returns (MsgExitSwapShareAmountInResponse);
   //These are old Osmosis message types they deprecated and removed a long time ago, needed for backwards compatibility
-  rpc CreatePool(MsgCreatePool) returns (MsgCreatePoolResponse);
+  rpc CreatePool(MsgCreatePool)
+      returns (MsgCreatePoolResponse);
+  rpc CreateBalancerPool(MsgCreateBalancerPool)
+      returns (MsgCreateBalancerPoolResponse);
 }
 
 // ===================== MsgJoinPool
@@ -261,3 +264,17 @@ message MsgCreatePool {
 }
 
 message MsgCreatePoolResponse {}
+
+message MsgCreateBalancerPool {
+  string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
+
+  PoolParams poolParams = 2 [ (gogoproto.moretags) = "yaml:\"pool_params\"" ];
+
+  repeated osmosis.gamm.v1beta1.PoolAsset poolAssets = 3
+      [ (gogoproto.nullable) = false ];
+
+  string future_pool_governor = 4
+      [ (gogoproto.moretags) = "yaml:\"future_pool_governor\"" ];
+}
+
+message MsgCreateBalancerPoolResponse {}

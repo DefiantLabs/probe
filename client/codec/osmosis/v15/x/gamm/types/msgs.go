@@ -13,7 +13,9 @@ var (
 	_ sdk.Msg = (*MsgJoinSwapShareAmountOut)(nil)
 	_ sdk.Msg = (*MsgExitSwapShareAmountIn)(nil)
 	_ sdk.Msg = (*MsgExitSwapExternAmountOut)(nil)
+	//Old Osmosis GAMM message types
 	_ sdk.Msg = (*MsgCreatePool)(nil)
+	_ sdk.Msg = (*MsgCreateBalancerPool)(nil)
 )
 
 // WARNING: The functions in here are interface stub definitions, not usable in their current state
@@ -156,7 +158,7 @@ func (msg MsgExitSwapExternAmountOut) GetSigners() []sdk.AccAddress {
 
 // Old Message Types
 
-// Join
+// CreatePool
 func (msg MsgCreatePool) Route() string { return "" }
 
 func (msg MsgCreatePool) Type() string { return "" }
@@ -170,5 +172,22 @@ func (msg MsgCreatePool) GetSignBytes() []byte {
 }
 
 func (msg MsgCreatePool) GetSigners() []sdk.AccAddress {
+	return nil
+}
+
+// CreatePool
+func (msg MsgCreateBalancerPool) Route() string { return "" }
+
+func (msg MsgCreateBalancerPool) Type() string { return "" }
+
+func (msg MsgCreateBalancerPool) ValidateBasic() error {
+	return nil
+}
+
+func (msg MsgCreateBalancerPool) GetSignBytes() []byte {
+	return nil
+}
+
+func (msg MsgCreateBalancerPool) GetSigners() []sdk.AccAddress {
 	return nil
 }
