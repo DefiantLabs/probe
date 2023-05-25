@@ -13,6 +13,7 @@ var (
 	_ sdk.Msg = (*MsgJoinSwapShareAmountOut)(nil)
 	_ sdk.Msg = (*MsgExitSwapShareAmountIn)(nil)
 	_ sdk.Msg = (*MsgExitSwapExternAmountOut)(nil)
+	_ sdk.Msg = (*MsgCreatePool)(nil)
 )
 
 // WARNING: The functions in here are interface stub definitions, not usable in their current state
@@ -150,5 +151,24 @@ func (msg MsgExitSwapExternAmountOut) GetSignBytes() []byte {
 }
 
 func (msg MsgExitSwapExternAmountOut) GetSigners() []sdk.AccAddress {
+	return nil
+}
+
+// Old Message Types
+
+// Join
+func (msg MsgCreatePool) Route() string { return "" }
+
+func (msg MsgCreatePool) Type() string { return "" }
+
+func (msg MsgCreatePool) ValidateBasic() error {
+	return nil
+}
+
+func (msg MsgCreatePool) GetSignBytes() []byte {
+	return nil
+}
+
+func (msg MsgCreatePool) GetSigners() []sdk.AccAddress {
 	return nil
 }
