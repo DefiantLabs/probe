@@ -42,6 +42,9 @@ func TxsRPC(q *Query, req *txTypes.GetTxsEventRequest, codec client.Codec) (*txT
 	}
 
 	for _, tx := range res.GetTxs() {
+		// BUG: This function errors out on the first type error, meaning that the first message that fails ends the unpacking process
+		// Since TXs can have multiple messages, this means that we won't be able to process the messages that come after the first error
+		// We may want to pull out the unpacking logic into a separate function that can be called on each message individually but not fail hard
 		tx.UnpackInterfaces(codec.InterfaceRegistry)
 	}
 
