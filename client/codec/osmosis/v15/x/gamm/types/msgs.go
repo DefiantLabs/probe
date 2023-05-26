@@ -26,15 +26,19 @@ func (msg MsgJoinPool) Route() string { return "" }
 func (msg MsgJoinPool) Type() string { return "" }
 
 func (msg MsgJoinPool) ValidateBasic() error {
-	return nil
+	panic("MsgJoinPool ValidateBasic Unimplemented")
 }
 
 func (msg MsgJoinPool) GetSignBytes() []byte {
-	return nil
+	panic("MsgJoinPool GetSignBytes Unimplemented")
 }
 
 func (msg MsgJoinPool) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // Exit
@@ -43,15 +47,19 @@ func (msg MsgExitPool) Route() string { return "" }
 func (msg MsgExitPool) Type() string { return "" }
 
 func (msg MsgExitPool) ValidateBasic() error {
-	return nil
+	panic("MsgExitPool ValidateBasic Unimplemented")
 }
 
 func (msg MsgExitPool) GetSignBytes() []byte {
-	return nil
+	panic("MsgExitPool GetSignBytes Unimplemented")
 }
 
 func (msg MsgExitPool) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // SwapExactIn
@@ -60,15 +68,19 @@ func (msg MsgSwapExactAmountIn) Route() string { return "" }
 func (msg MsgSwapExactAmountIn) Type() string { return "" }
 
 func (msg MsgSwapExactAmountIn) ValidateBasic() error {
-	return nil
+	panic("MsgSwapExactAmountIn ValidateBasic Unimplemented")
 }
 
 func (msg MsgSwapExactAmountIn) GetSignBytes() []byte {
-	return nil
+	panic("MsgSwapExactAmountIn GetSignBytes Unimplemented")
 }
 
 func (msg MsgSwapExactAmountIn) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // SwapExactOut
@@ -77,15 +89,19 @@ func (msg MsgSwapExactAmountOut) Route() string { return "" }
 func (msg MsgSwapExactAmountOut) Type() string { return "" }
 
 func (msg MsgSwapExactAmountOut) ValidateBasic() error {
-	return nil
+	panic("MsgSwapExactAmountOut ValidateBasic Unimplemented")
 }
 
 func (msg MsgSwapExactAmountOut) GetSignBytes() []byte {
-	return nil
+	panic("MsgSwapExactAmountOut GetSignBytes Unimplemented")
 }
 
 func (msg MsgSwapExactAmountOut) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // JoinSwapExternIn
@@ -94,15 +110,19 @@ func (msg MsgJoinSwapExternAmountIn) Route() string { return "" }
 func (msg MsgJoinSwapExternAmountIn) Type() string { return "" }
 
 func (msg MsgJoinSwapExternAmountIn) ValidateBasic() error {
-	return nil
+	panic("MsgJoinSwapExternAmountIn ValidateBasic Unimplemented")
 }
 
 func (msg MsgJoinSwapExternAmountIn) GetSignBytes() []byte {
-	return nil
+	panic("MsgJoinSwapExternAmountIn GetSignBytes Unimplemented")
 }
 
 func (msg MsgJoinSwapExternAmountIn) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // JoinSwapShareOut
@@ -111,15 +131,19 @@ func (msg MsgJoinSwapShareAmountOut) Route() string { return "" }
 func (msg MsgJoinSwapShareAmountOut) Type() string { return "" }
 
 func (msg MsgJoinSwapShareAmountOut) ValidateBasic() error {
-	return nil
+	panic("MsgJoinSwapShareAmountOut ValidateBasic Unimplemented")
 }
 
 func (msg MsgJoinSwapShareAmountOut) GetSignBytes() []byte {
-	return nil
+	panic("MsgJoinSwapShareAmountOut GetSignBytes Unimplemented")
 }
 
 func (msg MsgJoinSwapShareAmountOut) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // ExitSwapShareIn
@@ -128,15 +152,19 @@ func (msg MsgExitSwapShareAmountIn) Route() string { return "" }
 func (msg MsgExitSwapShareAmountIn) Type() string { return "" }
 
 func (msg MsgExitSwapShareAmountIn) ValidateBasic() error {
-	return nil
+	panic("MsgExitSwapShareAmountIn ValidateBasic Unimplemented")
 }
 
 func (msg MsgExitSwapShareAmountIn) GetSignBytes() []byte {
-	return nil
+	panic("MsgExitSwapShareAmountIn GetSignBytes Unimplemented")
 }
 
 func (msg MsgExitSwapShareAmountIn) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // ExitSwapExternOut
@@ -145,15 +173,19 @@ func (msg MsgExitSwapExternAmountOut) Route() string { return "" }
 func (msg MsgExitSwapExternAmountOut) Type() string { return "" }
 
 func (msg MsgExitSwapExternAmountOut) ValidateBasic() error {
-	return nil
+	panic("MsgExitSwapExternAmountOut ValidateBasic Unimplemented")
 }
 
 func (msg MsgExitSwapExternAmountOut) GetSignBytes() []byte {
-	return nil
+	panic("MsgExitSwapExternAmountOut GetSignBytes Unimplemented")
 }
 
 func (msg MsgExitSwapExternAmountOut) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // Old Message Types
@@ -164,15 +196,19 @@ func (msg MsgCreatePool) Route() string { return "" }
 func (msg MsgCreatePool) Type() string { return "" }
 
 func (msg MsgCreatePool) ValidateBasic() error {
-	return nil
+	panic("MsgCreatePool ValidateBasic Unimplemented")
 }
 
 func (msg MsgCreatePool) GetSignBytes() []byte {
-	return nil
+	panic("MsgCreatePool GetSignBytes Unimplemented")
 }
 
 func (msg MsgCreatePool) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
 
 // CreatePool
@@ -181,13 +217,17 @@ func (msg MsgCreateBalancerPool) Route() string { return "" }
 func (msg MsgCreateBalancerPool) Type() string { return "" }
 
 func (msg MsgCreateBalancerPool) ValidateBasic() error {
-	return nil
+	panic("MsgCreateBalancerPool ValidateBasic Unimplemented")
 }
 
 func (msg MsgCreateBalancerPool) GetSignBytes() []byte {
-	return nil
+	panic("MsgCreateBalancerPool GetSignBytes Unimplemented")
 }
 
 func (msg MsgCreateBalancerPool) GetSigners() []sdk.AccAddress {
-	return nil
+	addr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{addr}
 }
