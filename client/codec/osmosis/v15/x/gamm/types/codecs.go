@@ -23,6 +23,9 @@ func RegisterInterfaces(registry types.InterfaceRegistry) {
 		&MsgJoinSwapShareAmountOut{},
 		&MsgExitSwapShareAmountIn{},
 		&MsgExitSwapExternAmountOut{},
+		// Old Osmosis GAMM message types
+		&MsgCreatePool{},
+		&MsgCreateBalancerPool{},
 	)
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)
 }
