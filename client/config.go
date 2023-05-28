@@ -3,6 +3,7 @@
 package client
 
 import (
+	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
@@ -37,6 +38,7 @@ var (
 		slashing.AppModuleBasic{},
 		staking.AppModuleBasic{},
 		vesting.AppModuleBasic{},
+		wasm.AppModuleBasic{},
 		ibc.AppModuleBasic{},
 		ibcTransfer.AppModuleBasic{},
 		ibcTm.AppModuleBasic{},
