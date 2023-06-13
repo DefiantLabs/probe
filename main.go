@@ -8,6 +8,7 @@ import (
 	gammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
 	poolmanagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
 	querier "github.com/DefiantLabs/probe/query"
+	osmosisQueryTypes "github.com/DefiantLabs/probe/query/osmosis"
 	cosmosTypes "github.com/cosmos/cosmos-sdk/types"
 	cquery "github.com/cosmos/cosmos-sdk/types/query"
 	ibcChanTypes "github.com/cosmos/ibc-go/v7/modules/core/04-channel/types"
@@ -110,6 +111,40 @@ func main() {
 			}
 		}
 	}
+
+	// Osmosis specific querying proof of concepts
+
+	// Get the latest Epoch data
+
+	if cconfig.ChainID == "osmosis-1" {
+		epochData, err := osmosisQueryTypes.EpochsAtHeightRPC(&query, checkHeight)
+
+		if err != nil {
+			fmt.Println("Error getting epoch results")
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		fmt.Println("Got epoch results, some data follows:")
+		for _, epoch := range epochData.Epochs {
+			fmt.Printf("Epoch Identifier: %+v\n", epoch.Identifier)
+			fmt.Printf("Epoch Current Start Height: %+v\n", epoch.CurrentEpochStartHeight)
+			fmt.Printf("Epoch Duration: %+v\n", epoch.Duration)
+		}
+
+		protorevDevAccountData, err := osmosisQueryTypes.ProtorevDeveloperAccountRPC(&query)
+
+		if err != nil {
+			fmt.Println("Error getting protorev results")
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		fmt.Println("Got protorev results, some data follows:")
+		fmt.Println("Protorev Developer Account Address: ", protorevDevAccountData.DeveloperAccount)
+
+	}
+
 }
 
 var handlers = map[string]func(cosmosTypes.Msg){
