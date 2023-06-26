@@ -65,7 +65,7 @@ Probe excels in its ability to handle Cosmos SDK types and specialized modules. 
 
 Key Highlights:
 
-- :dart: **Generalized Querying**: Finely tuned for transaction and message type querying, Probe focuses on what matters most.
+- :dart: **Generalized Querying**: Finely tuned for transaction and message type querying.
 - :package: **Module Support**: Comprehensive solution for unpacking base Cosmos SDK types and handling customized modules.
 - 🕊️: **Lightweight Design**: A minimalistic design that places querying at the forefront, making it a go-to tool for developers.
 - 🥇: **Continuity and Evolution**: Probe was originally inspired by the now-discontinued Strangelove Ventures Lens, showing a strong lineage and progressive improvement in the Cosmos SDK querying tools.
