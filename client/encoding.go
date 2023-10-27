@@ -30,13 +30,23 @@ func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
 	modBasic.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	modBasic.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
-	osmosisGammTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-	osmosisPoolManagerTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-	osmosisLockupTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-	tendermintLiquidityTypes.RegisterLegacyAminoCodec(encodingConfig.Amino)
-	tendermintLiquidityTypes.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-
 	return encodingConfig
+}
+
+// Split out from base codec to not include explicitly.
+// Should be included only when needed.
+func RegisterOsmosisInterfaces(registry types.InterfaceRegistry) {
+	// Needs to be extended in order to cover all the modules
+	osmosisGammTypes.RegisterInterfaces(registry)
+	osmosisPoolManagerTypes.RegisterInterfaces(registry)
+	osmosisLockupTypes.RegisterInterfaces(registry)
+}
+
+// Split out from base codec to not include explicitly.
+// Should be included only when needed.
+func RegisterTendermintLiquidityInterfaces(aminoCodec *codec.LegacyAmino, registry types.InterfaceRegistry) {
+	tendermintLiquidityTypes.RegisterLegacyAminoCodec(aminoCodec)
+	tendermintLiquidityTypes.RegisterInterfaces(registry)
 }
 
 func MakeCodecConfig() Codec {
