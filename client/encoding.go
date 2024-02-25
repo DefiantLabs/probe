@@ -3,10 +3,6 @@
 package client
 
 import (
-	osmosisGammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
-	osmosisLockupTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/lockup/types"
-	osmosisPoolManagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
-	tendermintLiquidityTypes "github.com/DefiantLabs/probe/client/codec/tendermint/liquidity/x/liquidity/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
@@ -31,22 +27,6 @@ func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
 	modBasic.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
 	return encodingConfig
-}
-
-// Split out from base codec to not include explicitly.
-// Should be included only when needed.
-func RegisterOsmosisInterfaces(registry types.InterfaceRegistry) {
-	// Needs to be extended in order to cover all the modules
-	osmosisGammTypes.RegisterInterfaces(registry)
-	osmosisPoolManagerTypes.RegisterInterfaces(registry)
-	osmosisLockupTypes.RegisterInterfaces(registry)
-}
-
-// Split out from base codec to not include explicitly.
-// Should be included only when needed.
-func RegisterTendermintLiquidityInterfaces(aminoCodec *codec.LegacyAmino, registry types.InterfaceRegistry) {
-	tendermintLiquidityTypes.RegisterLegacyAminoCodec(aminoCodec)
-	tendermintLiquidityTypes.RegisterInterfaces(registry)
 }
 
 func MakeCodecConfig() Codec {

@@ -1,5 +1,0 @@
-# This module represents buf.build/cosmos/cosmos-sdk
-version: v1
-name: buf.build/cosmos/cosmos-sdk
-deps:
-  - buf.build/cosmos/gogo-proto

@@ -11,6 +11,7 @@ import (
 	coretypes "github.com/cometbft/cometbft/rpc/core/types"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 	txTypes "github.com/cosmos/cosmos-sdk/types/tx"
+	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -47,4 +48,10 @@ func (q *Query) TxByHeight(cc client.Codec) (*txTypes.GetTxsEventResponse, error
 func (q *Query) Status() (*coretypes.ResultStatus, error) {
 	/// TODO: In the future have some logic to route the query to the appropriate client (gRPC or RPC)
 	return StatusRPC(q)
+}
+
+func (q *Query) ValidatorsAtHeight(height int64) (*stakingTypes.QueryValidatorsResponse, error) {
+	/// TODO: In the future have some logic to route the query to the appropriate client (gRPC or RPC)
+	resp, err := ValidatorsAtHeightRPC(q, height)
+	return resp, err
 }

@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"strings"
 
+	"cosmossdk.io/store/rootmulti"
 	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cosmos/cosmos-sdk/store/rootmulti"
 	gogogrpc "github.com/cosmos/gogoproto/grpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -34,7 +34,7 @@ func (cc *ChainClient) Invoke(ctx context.Context, method string, req, reply int
 
 	// In both cases, we don't allow empty request req (it will panic unexpectedly).
 	if reflect.ValueOf(req).IsNil() {
-		return sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "request cannot be nil")
+		return sdkerrors.ErrInvalidRequest.Wrap("request cannot be nil")
 	}
 
 	inMd, _ := metadata.FromOutgoingContext(ctx)
@@ -85,8 +85,7 @@ func (cc *ChainClient) RunGRPCQuery(ctx context.Context, method string, req inte
 			return abci.ResponseQuery{}, nil, err
 		}
 		if height < 0 {
-			return abci.ResponseQuery{}, nil, sdkerrors.Wrapf(
-				sdkerrors.ErrInvalidRequest,
+			return abci.ResponseQuery{}, nil, sdkerrors.ErrInvalidRequest.Wrapf(
 				"client.Context.Invoke: height (%d) from %q must be >= 0", height, grpctypes.GRPCBlockHeightHeader)
 		}
 
