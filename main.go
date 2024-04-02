@@ -25,7 +25,7 @@ func main() {
 		Debug:          false,
 		Timeout:        "60s",
 		OutputFormat:   "json",
-		Modules:        client.ModuleBasics,
+		Modules:        client.DefaultModuleBasics,
 	}
 	cl, err := client.NewChainClient(cconfig, "", nil, nil)
 	if err != nil {
