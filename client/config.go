@@ -24,7 +24,9 @@ import (
 )
 
 var (
-	ModuleBasics = []module.AppModuleBasic{
+	// Provides a default set of AppModuleBasics that are included in the ChainClientConfig
+	// This is used to provide a default set of modules that will be used for protobuf registration and in-app decoding of RPC responses
+	DefaultModuleBasics = []module.AppModuleBasic{
 		auth.AppModuleBasic{},
 		authz.AppModuleBasic{},
 		bank.AppModuleBasic{},
