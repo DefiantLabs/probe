@@ -4,7 +4,7 @@ package osmosis.protorev.v1beta1;
 import "gogoproto/gogo.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 
-option go_package = "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/protorev/types";
+option go_package = "github.com/nodersteam/probe/client/codec/osmosis/v15/x/protorev/types";
 
 // Query defines the gRPC querier service.
 service Query {

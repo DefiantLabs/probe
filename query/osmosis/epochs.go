@@ -3,9 +3,9 @@ package query
 import (
 	"fmt"
 
-	epochsTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/epochs/types"
-	queryTypes "github.com/DefiantLabs/probe/query"
 	coretypes "github.com/cometbft/cometbft/rpc/core/types"
+	epochsTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/epochs/types"
+	queryTypes "github.com/nodersteam/probe/query"
 )
 
 func EpochsAtHeightRPC(q *queryTypes.Query, height int64) (*epochsTypes.QueryEpochsInfoResponse, error) {

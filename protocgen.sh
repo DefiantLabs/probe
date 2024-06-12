@@ -10,5 +10,5 @@ for dir in $proto_dirs; do
 done
 
 # move proto files to the right places
-cp -r github.com/DefiantLabs/probe/* ./
+cp -r github.com/nodersteam/probe/* ./
 rm -rf github.com

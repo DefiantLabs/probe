@@ -1,9 +1,9 @@
 package staking
 
 import (
-	probeQueryTypes "github.com/DefiantLabs/probe/query"
 	queryTypes "github.com/cosmos/cosmos-sdk/types/query"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	probeQueryTypes "github.com/nodersteam/probe/query"
 )
 
 func DelegatorDelegationsRPC(q *probeQueryTypes.Query, delegatorAddress string, paginationKey []byte) (*stakingTypes.QueryDelegatorDelegationsResponse, error) {

@@ -1,9 +1,9 @@
 package staking
 
 import (
-	probeQueryTypes "github.com/DefiantLabs/probe/query"
 	queryTypes "github.com/cosmos/cosmos-sdk/types/query"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	probeQueryTypes "github.com/nodersteam/probe/query"
 )
 
 func ValidatorsRPC(q *probeQueryTypes.Query, status *stakingTypes.BondStatus, paginationKey []byte) (*stakingTypes.QueryValidatorsResponse, error) {

@@ -1,8 +1,8 @@
 package query
 
 import (
-	protorevTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/protorev/types"
-	queryTypes "github.com/DefiantLabs/probe/query"
+	protorevTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/protorev/types"
+	queryTypes "github.com/nodersteam/probe/query"
 )
 
 func ProtorevDeveloperAccountRPC(q *queryTypes.Query) (*protorevTypes.QueryGetProtoRevDeveloperAccountResponse, error) {

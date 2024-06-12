@@ -4,14 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/DefiantLabs/probe/client"
-	gammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
-	poolmanagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
-	querier "github.com/DefiantLabs/probe/query"
-	osmosisQueryTypes "github.com/DefiantLabs/probe/query/osmosis"
 	cosmosTypes "github.com/cosmos/cosmos-sdk/types"
 	cquery "github.com/cosmos/cosmos-sdk/types/query"
-	ibcChanTypes "github.com/cosmos/ibc-go/v7/modules/core/04-channel/types"
+	"github.com/nodersteam/probe/client"
+	gammTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/gamm/types"
+	poolmanagerTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/poolmanager/types"
+	querier "github.com/nodersteam/probe/query"
+	osmosisQueryTypes "github.com/nodersteam/probe/query/osmosis"
 )
 
 func main() {
@@ -151,10 +150,6 @@ var handlers = map[string]func(cosmosTypes.Msg){
 	"/osmosis.gamm.v1beta1.MsgSwapExactAmountOut": func(currMsg cosmosTypes.Msg) {
 		swapExactAmountOut := currMsg.(*gammTypes.MsgSwapExactAmountOut)
 		fmt.Printf("%s swapped %s\n", swapExactAmountOut.Sender, swapExactAmountOut.TokenOut)
-	},
-	"/ibc.core.channel.v1.MsgAcknowledgement": func(currMsg cosmosTypes.Msg) {
-		ack := currMsg.(*ibcChanTypes.MsgAcknowledgement)
-		fmt.Printf("%s acked with result %s\n", ack.Signer, ack.Acknowledgement)
 	},
 	"/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn": func(currMsg cosmosTypes.Msg) {
 		swapExactAmountIn := currMsg.(*poolmanagerTypes.MsgSwapExactAmountIn)

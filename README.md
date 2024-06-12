@@ -1,5 +1,5 @@
 # Probe 
-![image](https://github.com/DefiantLabs/probe/assets/807940/1ac446be-4ba7-4ee2-b317-856930b899fb)
+![image](https://github.com/nodersteam/probe/assets/807940/1ac446be-4ba7-4ee2-b317-856930b899fb)
 
 
 *Your lightweight Cosmos SDK Querier*

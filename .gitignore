@@ -1,2 +1,4 @@
 .env
 probe
+vendor
+.idea

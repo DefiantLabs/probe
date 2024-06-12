@@ -10,7 +10,6 @@ import (
 	"strings"
 
 	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cosmos/cosmos-sdk/store/rootmulti"
 	gogogrpc "github.com/cosmos/gogoproto/grpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -170,8 +169,8 @@ func isQueryStoreWithProof(path string) bool {
 		return false
 	case paths[0] != "store":
 		return false
-	case rootmulti.RequireProof("/" + paths[2]):
-		return true
+		//case rootmulti.RequireProof("/" + paths[2]):
+		//	return true
 	}
 
 	return false

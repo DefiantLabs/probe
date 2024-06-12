@@ -3,16 +3,16 @@
 package client
 
 import (
-	osmosisGammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
-	osmosisLockupTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/lockup/types"
-	osmosisPoolManagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
-	tendermintLiquidityTypes "github.com/DefiantLabs/probe/client/codec/tendermint/liquidity/x/liquidity/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth/tx"
+	osmosisGammTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/gamm/types"
+	osmosisLockupTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/lockup/types"
+	osmosisPoolManagerTypes "github.com/nodersteam/probe/client/codec/osmosis/v15/x/poolmanager/types"
+	tendermintLiquidityTypes "github.com/nodersteam/probe/client/codec/tendermint/liquidity/x/liquidity/types"
 )
 
 type Codec struct {

@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/DefiantLabs/probe/client"
 	coretypes "github.com/cometbft/cometbft/rpc/core/types"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 	txTypes "github.com/cosmos/cosmos-sdk/types/tx"
+	"github.com/nodersteam/probe/client"
 	"google.golang.org/grpc/metadata"
 )
 

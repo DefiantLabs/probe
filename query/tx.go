@@ -5,9 +5,9 @@ package query
 import (
 	"fmt"
 
-	"github.com/DefiantLabs/probe/client"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	txTypes "github.com/cosmos/cosmos-sdk/types/tx"
+	"github.com/nodersteam/probe/client"
 )
 
 // TxRPC Get Transactions for the given block height.
