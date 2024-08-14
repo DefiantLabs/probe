@@ -204,7 +204,16 @@ func (registry *ProbeInterfaceRegistry) UnpackAny(any *cosmosCodecTypes.Any, ifa
 		return err
 	}
 
+	var typeURL string
+	// WARN: Is this the proper way to handle this? The custom message implementations are not returning a TypeURL in the Any after calling proto.MessageName
+	if newAny.TypeUrl == "/" {
+		typeURL = any.TypeUrl
+	} else {
+		typeURL = newAny.TypeUrl
+	}
+
 	*any = *newAny
+	any.TypeUrl = typeURL
 
 	return nil
 }
