@@ -7,6 +7,7 @@ import (
 	osmosisLockupTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/lockup/types"
 	osmosisPoolManagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
 	tendermintLiquidityTypes "github.com/DefiantLabs/probe/client/codec/tendermint/liquidity/x/liquidity/types"
+	probeCodecTypes "github.com/DefiantLabs/probe/client/codec/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
@@ -16,10 +17,11 @@ import (
 )
 
 type Codec struct {
-	InterfaceRegistry types.InterfaceRegistry
-	Marshaler         codec.Codec
-	TxConfig          client.TxConfig
-	Amino             *codec.LegacyAmino
+	ProbeInterfaceRegistry *probeCodecTypes.ProbeInterfaceRegistry
+	InterfaceRegistry      types.InterfaceRegistry
+	Marshaler              codec.Codec
+	TxConfig               client.TxConfig
+	Amino                  *codec.LegacyAmino
 }
 
 func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
@@ -50,12 +52,13 @@ func RegisterTendermintLiquidityInterfaces(aminoCodec *codec.LegacyAmino, regist
 }
 
 func MakeCodecConfig() Codec {
-	interfaceRegistry := types.NewInterfaceRegistry()
-	marshaler := codec.NewProtoCodec(interfaceRegistry)
+	cosmosInterfaceRegistry, probeRegistry := probeCodecTypes.NewInterfaceRegistry()
+	marshaler := codec.NewProtoCodec(cosmosInterfaceRegistry)
 	return Codec{
-		InterfaceRegistry: interfaceRegistry,
-		Marshaler:         marshaler,
-		TxConfig:          tx.NewTxConfig(marshaler, tx.DefaultSignModes),
-		Amino:             codec.NewLegacyAmino(),
+		ProbeInterfaceRegistry: probeRegistry,
+		InterfaceRegistry:      cosmosInterfaceRegistry,
+		Marshaler:              marshaler,
+		TxConfig:               tx.NewTxConfig(marshaler, tx.DefaultSignModes),
+		Amino:                  codec.NewLegacyAmino(),
 	}
 }
