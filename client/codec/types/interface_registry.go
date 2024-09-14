@@ -77,6 +77,11 @@ func (registry *ProbeInterfaceRegistry) RegisterCustomTypeURL(iface interface{},
 	registry.registerImpl(iface, typeURL, impl)
 }
 
+func (registry *ProbeInterfaceRegistry) TypeURLIsRegistered(typeURL string) bool {
+	_, found := registry.typeURLMap[typeURL]
+	return found
+}
+
 // registerImpl registers a concrete type which implements the given
 // interface under `typeURL`.
 //

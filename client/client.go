@@ -27,17 +27,26 @@ type ChainClient struct {
 
 func NewChainClient(ccc *ChainClientConfig, homepath string, input io.Reader, output io.Writer, kro ...keyring.Option) (*ChainClient, error) {
 	ccc.KeyDirectory = keysDir(homepath, ccc.ChainID)
+
+	codec, err := MakeCodec(ccc.Modules, ccc.CustomMsgTypeRegistry)
+
+	if err != nil {
+		return nil, err
+	}
+
 	cc := &ChainClient{
 		KeyringOptions: kro,
 		Config:         ccc,
 		Input:          input,
 		Output:         output,
-		Codec:          MakeCodec(ccc.Modules),
+		Codec:          codec,
 		Logger:         log.NewTMLogger(log.NewSyncWriter(output)),
 	}
+
 	if err := cc.Init(); err != nil {
 		return nil, err
 	}
+
 	return cc, nil
 }
 
