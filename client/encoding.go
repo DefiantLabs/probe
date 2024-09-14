@@ -3,6 +3,8 @@
 package client
 
 import (
+	"fmt"
+
 	osmosisGammTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/gamm/types"
 	osmosisLockupTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/lockup/types"
 	osmosisPoolManagerTypes "github.com/DefiantLabs/probe/client/codec/osmosis/v15/x/poolmanager/types"
@@ -12,6 +14,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/std"
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth/tx"
 )
@@ -24,7 +27,7 @@ type Codec struct {
 	Amino                  *codec.LegacyAmino
 }
 
-func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
+func MakeCodec(moduleBasics []module.AppModuleBasic, customMsgTypeRegistry map[string]sdkTypes.Msg) (Codec, error) {
 	modBasic := module.NewBasicManager(moduleBasics...)
 	encodingConfig := MakeCodecConfig()
 	std.RegisterLegacyAminoCodec(encodingConfig.Amino)
@@ -32,7 +35,14 @@ func MakeCodec(moduleBasics []module.AppModuleBasic) Codec {
 	modBasic.RegisterLegacyAminoCodec(encodingConfig.Amino)
 	modBasic.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
-	return encodingConfig
+	for typeURL, msg := range customMsgTypeRegistry {
+		if encodingConfig.ProbeInterfaceRegistry.TypeURLIsRegistered(typeURL) {
+			return Codec{}, fmt.Errorf("error registering custom message type in codec, typeURL %s is already registered", typeURL)
+		}
+		encodingConfig.ProbeInterfaceRegistry.RegisterCustomTypeURL((*sdkTypes.Msg)(nil), typeURL, msg)
+	}
+
+	return encodingConfig, nil
 }
 
 // Split out from base codec to not include explicitly.
